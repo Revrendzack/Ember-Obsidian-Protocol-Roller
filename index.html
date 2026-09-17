@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11121b" />
+    <title>Obsidian Roller</title>
+    <link rel="icon" href="/assets/obsidian-die.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="brand" aria-label="Obsidian Roller">
+        <img src="/assets/obsidian-die.svg" alt="" />
+        <div><p class="eyebrow">EMBER: OBSIDIAN PROTOCOL</p><h1>Roller</h1></div>
+        <span class="status"><i></i> SESSION ACTIVE</span>
+      </section>
+
+      <section class="roller-panel" aria-label="Dice roller">
+        <div class="display"><span id="formula-display">2d6 + 2</span><strong id="total-display" aria-live="polite">—</strong><small id="result-label">READY TO ROLL</small></div>
+        <div class="dice-grid" aria-label="Choose dice">
+          <button data-die="4">d4</button><button data-die="6">d6</button><button data-die="8">d8</button><button data-die="10">d10</button><button data-die="12">d12</button><button data-die="20">d20</button>
+        </div>
+        <div class="formula-controls">
+          <label>Dice <input id="count" type="number" min="1" max="20" value="2" /></label>
+          <label>Modifier <input id="modifier" type="number" min="-20" max="20" value="2" /></label>
+          <label>Difficulty <input id="difficulty" type="number" min="0" max="100" value="8" /></label>
+        </div>
+        <button id="roll-button" class="roll-button">ROLL PROTOCOL</button>
+        <p class="hint">Select a die, set your pool and modifier, then roll against the difficulty.</p>
+        <div id="dddice-box" class="dddice-box" aria-label="3D dice presentation"></div>
+        <p id="dddice-status" class="integration-status">3D dice: loading dddice…</p>
+      </section>
+
+      <aside class="side-panel">
+        <section class="quick-actions"><p class="panel-label">PROTOCOL TESTS</p><div>
+          <button data-preset="2d6+2@8">Standard <small>2d6 + 2 · 8</small></button>
+          <button data-preset="2d6+4@10">Risk <small>2d6 + 4 · 10</small></button>
+          <button data-preset="1d20+0@15">Critical <small>1d20 · 15</small></button>
+        </div></section>
+        <section class="history"><div class="history-head"><p class="panel-label">ROLL LOG</p><button id="clear-history" class="text-button">CLEAR</button></div><ol id="history-list"><li class="empty">No rolls recorded.</li></ol></section>
+      </aside>
+    </main>
+    <template id="history-item"><li><span class="history-total"></span><div><b class="history-formula"></b><small class="history-detail"></small></div><em class="history-outcome"></em></li></template>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
